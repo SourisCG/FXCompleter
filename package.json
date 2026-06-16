@@ -1,0 +1,92 @@
+{
+  "name": "fxcompleter",
+  "displayName": "FXCompleter",
+  "description": "Full FXML autocomplete for JavaFX with auto-imports, CSS support and validation",
+  "version": "0.0.1",
+  "publisher": "SourisCG",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SourisCG/FXCompleter"
+  },
+  "bugs": {
+    "url": "https://github.com/SourisCG/FXCompleter/issues"
+  },
+  "homepage": "https://github.com/SourisCG/FXCompleter#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "galleryBanner": {
+    "color": "#2D75B5",
+    "theme": "dark"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "javafx",
+    "fxml",
+    "java",
+    "autocomplete",
+    "intellisense"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:javafx-fxml"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "javafx-fxml",
+        "aliases": [
+          "JavaFX FXML",
+          "javafx fxml",
+          "FXML"
+        ],
+        "extensions": [
+          ".fxml"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "javafx-fxml",
+        "scopeName": "text.xml.javafx",
+        "path": "./syntaxes/fxml.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "fxcompleter.fixAllImports",
+        "title": "FXCompleter: Add all missing imports"
+      },
+      {
+        "command": "fxcompleter.removeUnusedImports",
+        "title": "FXCompleter: Remove all unused imports"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0",
+    "vscode-css-languageservice": "^6.2.12",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "vscode-uri": "^3.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.22.0",
+    "typescript": "^5.3.3"
+  }
+}

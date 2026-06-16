@@ -1,0 +1,120 @@
+{
+  "name": "JavaFX FXML",
+  "scopeName": "text.xml.javafx",
+  "fileTypes": ["fxml"],
+  "patterns": [
+    {
+      "include": "#tag"
+    },
+    {
+      "include": "#processing"
+    },
+    {
+      "include": "#comment"
+    }
+  ],
+  "repository": {
+    "tag": {
+      "patterns": [
+        {
+          "begin": "(<)([\\w.-]+)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.xml.javafx" },
+            "2": { "name": "entity.name.tag.xml.javafx" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.end.xml.javafx" }
+          },
+          "name": "meta.tag.xml.javafx",
+          "patterns": [
+            {
+              "include": "#attribute"
+            }
+          ]
+        },
+        {
+          "begin": "(</)([\\w.-]+)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.xml.javafx" },
+            "2": { "name": "entity.name.tag.xml.javafx" }
+          },
+          "end": "(>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.end.xml.javafx" }
+          },
+          "name": "meta.tag.xml.javafx"
+        }
+      ]
+    },
+    "attribute": {
+      "patterns": [
+        {
+          "match": "(\\b[\\w:-]+)(\\s*)(=)(\\s*)(\")",
+          "captures": {
+            "1": { "name": "entity.other.attribute-name.xml.javafx" },
+            "2": { "name": "text.xml.javafx" },
+            "3": { "name": "punctuation.separator.key-value.xml.javafx" },
+            "4": { "name": "text.xml.javafx" },
+            "5": { "name": "punctuation.definition.string.begin.xml.javafx" }
+          }
+        },
+        {
+          "match": "\\b(fx:id)\\b",
+          "name": "entity.other.attribute-name.xml.javafx"
+        },
+        {
+          "match": "\\b(fx:controller)\\b",
+          "name": "entity.other.attribute-name.xml.javafx"
+        },
+        {
+          "match": "\\b(on\\w+)\\b",
+          "name": "entity.other.attribute-name.xml.javafx"
+        },
+        {
+          "match": "(#)([\\w.]+)",
+          "captures": {
+            "1": { "name": "punctuation.definition.entity.xml.javafx" },
+            "2": { "name": "variable.other.object.property.xml.javafx" }
+          }
+        },
+        {
+          "match": "\\$\\{[\\w.]+\\}",
+          "name": "variable.other.bracket.expression.xml.javafx"
+        }
+      ]
+    },
+    "processing": {
+      "begin": "<\\?",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.processing-instruction.begin.xml.javafx" }
+      },
+      "end": "\\?>",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.processing-instruction.end.xml.javafx" }
+      },
+      "name": "meta.processing-instruction.xml.javafx",
+      "patterns": [
+        {
+          "match": "\\b(import)\\b",
+          "name": "keyword.other.import.xml.javafx"
+        },
+        {
+          "match": "\\b([\\w.]+)\\b",
+          "name": "string.other.import.class.xml.javafx"
+        }
+      ]
+    },
+    "comment": {
+      "begin": "<!--",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.comment.xml.javafx" }
+      },
+      "end": "-->",
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.comment.xml.javafx" }
+      },
+      "name": "comment.block.xml.javafx"
+    }
+  }
+}
