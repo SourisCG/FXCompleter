@@ -2,7 +2,7 @@
   "name": "fxcompleter",
   "displayName": "FXCompleter",
   "description": "Full FXML autocomplete for JavaFX with auto-imports, CSS support and validation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "SourisCG",
   "license": "MIT",
   "icon": "icon.png",
