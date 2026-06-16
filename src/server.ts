@@ -45,11 +45,11 @@ const connection = createConnection(ProposedFeatures.all)
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument)
 
 process.on('uncaughtException', (err) => {
-  connection.console.error(`[FXCompleter] Uncaught exception: ${err.message}\n${err.stack || ''}`)
+  process.stderr.write(`[FXCompleter] Uncaught exception: ${err.message}\n${err.stack || ''}\n`)
 })
 
 process.on('unhandledRejection', (reason) => {
-  connection.console.error(`[FXCompleter] Unhandled rejection: ${reason}`)
+  process.stderr.write(`[FXCompleter] Unhandled rejection: ${reason}\n`)
 })
 
 let cssLanguageService: LanguageService
@@ -74,10 +74,7 @@ connection.onInitialize((params: InitializeParams): InitializeResult => {
       hoverProvider: true,
       documentFormattingProvider: true,
       definitionProvider: true,
-      codeActionProvider: true,
-      executeCommandProvider: {
-        commands: ['fxcompleter.addImport', 'fxcompleter.fixAllImports', 'fxcompleter.removeUnusedImports']
-      }
+      codeActionProvider: true
     }
   }
 })
